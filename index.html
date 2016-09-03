@@ -1,0 +1,90 @@
+<head>
+<title>google-spreadcell.js</title>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/google-spreadcell.js"></script>
+</head>
+
+<body>
+
+  <h1>google-spreadcell.js</h1>
+
+  <a href="https://github.com/gsongsong/google-spreadcell-js">
+    <img style="position: absolute; top: 0; right: 0; border: 0;"
+    src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67"
+    alt="Fork me on GitHub"
+    data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
+  </a>
+
+  <div id="description">
+    google-spreadcell.js is a simple JavaScript library
+    that retrieves a spreadsheet from Google Sheets.
+  </div>
+
+  <div id="howto">
+    <h2>Requirement</h2>
+    <a href="https://jquery.com/">jQuery 1.9.1 or later</a>
+    <h2>Installation</h2>
+    Download a
+    <a href="https://raw.githubusercontent.com/gsongsong/google-spreadcell-js/gh-pages/js/google-spreadcell.js">
+      google-spreadcell.js
+    </a>
+    <h2>Configuration</h2>
+    <ol>
+      <li>
+        Prepare a spreadsheet.
+        We will use
+        <a href="https://docs.google.com/spreadsheets/d/17EwNIgGf9YqVUgl0WQftCJybGy2cYlKk7PKeJi0T3qU/edit#gid=0">
+          this
+        </a>
+        spreadsheet.
+      </li>
+      <li>
+        Publish a spreadsheet which you will use to a web
+        (<a href="https://support.google.com/docs/answer/37579?hl=en">Google's instruction</a>)
+      </li>
+      <li>
+        Find <b>key</b> of the sheet.
+        In this case, <b>17EwNIgGf9YqVUgl0WQftCJybGy2cYlKk7PKeJi0T3qU</b>
+      </li>
+    </ol>
+    <h2>Scripting</h2>
+    <script src="https://gist.github.com/gsongsong/05b298c45a77fe476a66c1c7508b775f.js"></script>
+  </div>
+
+  <h2>Demo in action</h2>
+  <div id="mlb">
+    Loading content...
+  </div>
+  <script>
+    var mlb_callback = function(obj) {
+      console.log(mlb)
+      $("#mlb").html("<table>")
+      $("#mlb table").css("border-collapse", "collapse")
+      $("#mlb table").append("<tr>")
+      for (var i = 0; i < mlb.header.length; i++) {
+        $("#mlb table tr:last-child").append("<td>")
+        $("#mlb table tr:last-child td:last-child").append(mlb.header[i])
+        $("#mlb table tr:last-child td:last-child").css({"width": "75px",
+                                                        "border-bottom":
+                                                        "2px solid #000",
+                                                        "text-align":
+                                                        "center"})
+      }
+      for (var i = 0; i < Math.min(mlb.body.length, 10); i++) {
+        $("#mlb table").append("<tr>")
+        for (var j = 0; j < mlb.body[i].length; j++) {
+          $("#mlb table tr:last-child").append("<td>")
+          $("#mlb table tr:last-child td:last-child").append(mlb.body[i][j])
+          $("#mlb table tr:last-child td:last-child").css({"border-bottom":
+                                                           "1px solid #000",
+                                                           "text-align":
+                                                           "center"})
+        }
+      }
+    }
+    var mlb = new SpreadCell({id: "17EwNIgGf9YqVUgl0WQftCJybGy2cYlKk7PKeJi0T3qU",
+                              contain_header: true,
+                              callback: mlb_callback});
+  </script>
+
+</body>
