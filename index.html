@@ -58,59 +58,64 @@
     <script src="https://gist.github.com/gsongsong/05b298c45a77fe476a66c1c7508b775f.js"></script>
   </div>
 
-  <h2>Demo in action</h2>
-  <div id="mlb">
-    Loading content...
-  </div>
-  <script>
-    var mlb_callback = function(obj) {
-      console.log(mlb)
-      $("#mlb").html("<table>")
-      $("#mlb table").css("border-collapse", "collapse")
-      $("#mlb table").append("<tr>")
-      for (var i = 0; i < mlb.header.length; i++) {
-        $("#mlb table tr:last-child").append("<td>")
-        $("#mlb table tr:last-child td:last-child").append(mlb.header[i])
-        $("#mlb table tr:last-child td:last-child").css({"width": "75px",
-                                                        "border-bottom":
-                                                        "2px solid #000",
-                                                        "text-align":
-                                                        "center"})
-      }
-      for (var i = 0; i < Math.min(mlb.body.length, 10); i++) {
+  <div id="demo">
+    <h2>Demo in action</h2>
+    <div id="mlb">
+      Loading content...
+    </div>
+    <script>
+      var mlb_callback = function(obj) {
+        console.log(mlb)
+        $("#mlb").html("<table>")
+        $("#mlb table").css("border-collapse", "collapse")
         $("#mlb table").append("<tr>")
-        for (var j = 0; j < mlb.body[i].length; j++) {
+        for (var i = 0; i < mlb.header.length; i++) {
           $("#mlb table tr:last-child").append("<td>")
-          $("#mlb table tr:last-child td:last-child").append(mlb.body[i][j])
-          $("#mlb table tr:last-child td:last-child").css({"border-bottom":
-                                                           "1px solid #000",
-                                                           "text-align":
-                                                           "center"})
+          $("#mlb table tr:last-child td:last-child").append(mlb.header[i])
+          $("#mlb table tr:last-child td:last-child").css({"width": "75px",
+                                                          "border-bottom":
+                                                          "2px solid #000",
+                                                          "text-align":
+                                                          "center"})
+        }
+        for (var i = 0; i < Math.min(mlb.body.length, 10); i++) {
+          $("#mlb table").append("<tr>")
+          for (var j = 0; j < mlb.body[i].length; j++) {
+            $("#mlb table tr:last-child").append("<td>")
+            $("#mlb table tr:last-child td:last-child").append(mlb.body[i][j])
+            $("#mlb table tr:last-child td:last-child").css({"border-bottom":
+                                                             "1px solid #000",
+                                                             "text-align":
+                                                             "center"})
+          }
         }
       }
-    }
-    var mlb = new SpreadCell({id: "17EwNIgGf9YqVUgl0WQftCJybGy2cYlKk7PKeJi0T3qU",
-                              contain_header: true,
-                              callback: mlb_callback});
-  </script>
+      var mlb = new SpreadCell({id: "17EwNIgGf9YqVUgl0WQftCJybGy2cYlKk7PKeJi0T3qU",
+                                contain_header: true,
+                                callback: mlb_callback});
+    </script>
+  </div>
 
-  <div id="disqus_thread"></div>
-  <script>
+  <div id="comment">
+    <h2>Please leave a comment</h2>
+    <div id="disqus_thread"></div>
+    <script>
 
-  /**
-   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
-  var disqus_config = function () {
-      this.page.url = 'https://gsongsong.github.io/spreadcell-js';  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = 'spreadcell.js'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-  };
-  (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document, s = d.createElement('script');
-      s.src = '//spreadcell-js.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-  })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+    var disqus_config = function () {
+        this.page.url = 'https://gsongsong.github.io/spreadcell-js';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'spreadcell.js'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = '//spreadcell-js.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
 
 </body>
